@@ -176,7 +176,7 @@ if mappe_scuole is not None:
             for idx, (_, row) in enumerate(scuole_fascia.iterrows()):
                 lat, lon = row["latitudine"], row["longitudine"]
                 nome = row["Denominazione"]
-                comune = row["sum_COMUNE"]
+                comune = row("Comune")  # Usa il campo comune corretto
                 indirizzo = row["Indirizzo"]
                 distanza_euclidea = row['distanza_euclidea_km']
                 
@@ -217,9 +217,9 @@ if mappe_scuole is not None:
                 📍 <i>{indirizzo}</i><br>
                 📏 Distanza diretta: {distanza_euclidea:.1f} km<br>
                 🚴 Bici: {minuti_bici} min / {km_bici} km<br>
-                🏘️ Comune: {comune}<br>
-                🏫 Montessori: {row['sum_CON METODO MONTESSORI']}<br>
-                🧠 Sostegno psicofisico: {row['sum_SOSTEGNO PSICOFISICO']}<br>
+                🏘️ Posti_Comune: {row['sum_COMUNE']}<br>
+                🏫 Posti_Montessori: {row['sum_CON METODO MONTESSORI']}<br>
+                🧠 Posti_Sostegno psicofisico: {row['sum_SOSTEGNO PSICOFISICO']}<br>
                 <a href="{gmaps_url}" target="_blank">🚌 Vai con i mezzi pubblici</a>
                 """
                 
@@ -243,7 +243,7 @@ if mappe_scuole is not None:
     st.subheader("📋 Dettagli Scuole")
     
     # Prepara dati per tabella
-    df_display = df_filtrato[['Denominazione', 'sum_COMUNE', 'Indirizzo', 'distanza_euclidea_km', 
+    df_display = df_filtrato[['Denominazione', 'Comune', 'Indirizzo', 'distanza_euclidea_km', 
                              'fascia_distanza', 'sum_CON METODO MONTESSORI', 'sum_SOSTEGNO PSICOFISICO']].copy()
     
     df_display.columns = ['Nome', 'Comune', 'Indirizzo', 'Distanza (km)', 'Fascia', 'Montessori', 'Sostegno']
@@ -287,7 +287,7 @@ if mappe_scuole is not None:
 
 else:
     st.error("❌ Impossibile caricare i dati delle scuole. Assicurati che il file 'mappa_scuole.csv' sia presente nella directory dell'app.")
-    st.info("💡 Il file dovrebbe contenere le colonne: Denominazione, sum_COMUNE, Indirizzo, latitudine, longitudine, sum_CON METODO MONTESSORI, sum_SOSTEGNO PSICOFISICO")
+    st.info("💡 Il file dovrebbe contenere le colonne: Denominazione, Comune, Indirizzo, latitudine, longitudine, sum_CON METODO MONTESSORI, sum_SOSTEGNO PSICOFISICO")
 
 # === Footer ===
 st.markdown("---")
