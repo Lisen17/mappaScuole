@@ -176,7 +176,7 @@ if mappe_scuole is not None:
             for idx, (_, row) in enumerate(scuole_fascia.iterrows()):
                 lat, lon = row["latitudine"], row["longitudine"]
                 nome = row["Denominazione"]
-                comune = row("Comune")  # Usa il campo comune corretto
+                comune = row["Comune"]  # Usa il campo comune corretto
                 indirizzo = row["Indirizzo"]
                 distanza_euclidea = row['distanza_euclidea_km']
                 
