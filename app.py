@@ -244,9 +244,9 @@ if mappe_scuole is not None:
     
     # Prepara dati per tabella
     df_display = df_filtrato[['Denominazione', 'Comune', 'Indirizzo', 'distanza_euclidea_km', 
-                             'fascia_distanza', 'sum_CON METODO MONTESSORI', 'sum_SOSTEGNO PSICOFISICO']].copy()
+                             'fascia_distanza', 'sum_COMUNE', 'sum_CON METODO MONTESSORI', 'sum_SOSTEGNO PSICOFISICO']].copy()
     
-    df_display.columns = ['Nome', 'Comune', 'Indirizzo', 'Distanza (km)', 'Fascia', 'Montessori', 'Sostegno']
+    df_display.columns = ['Nome', 'Comune', 'Indirizzo', 'Distanza (km)', 'Fascia', 'Posti_COMUNE', 'Posti_Montessori', 'Posti_Sostegno']
     df_display = df_display.sort_values('Distanza (km)')
     
     st.dataframe(df_display, use_container_width=True)
