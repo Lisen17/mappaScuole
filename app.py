@@ -88,7 +88,7 @@ api_key = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6IjFhNDc0ZTg4OTY1M
 
 st.sidebar.subheader("🎯 Filtri")
 fasce_disponibili = ["0-10 km", "10-20 km", "20+ km"]
-fasce_selezionate = st.sidebar.multiselect("Fasce di distanza", fasce_disponibili, default=["0-10 km"])
+fasce_selezionate = st.sidebar.multiselect("Fasce di distanza", fasce_disponibili, default=["0-10 km", "10-20 km", "20+ km"])
 mostra_posti_comune = st.sidebar.checkbox("Posti comune", value=False)
 mostra_posti_montessori = st.sidebar.checkbox("Posti montessori", value=False)
 mostra_posti_sostegno = st.sidebar.checkbox("Posti sostegno psicofisico", value=False)
